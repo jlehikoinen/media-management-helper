@@ -110,9 +110,9 @@ My Videos
 Utilizing OS X LaunchAgent
 --------------------------
 
-OS X LaunchD system can be used with the `media_mgmt_helper.py` script to automatically move files from source folder to target folder(s).
+OS X LaunchD system can be used together with the `media_mgmt_helper.py` script to automatically move files from source folder to target folder(s).
 
-Edit `com.yourdomain.media_mgmt_helper.plist` file with your personal details. Make sure that source path and `WatchPaths` path match. Add two target folders, if you want to put photos and videos into separate folders.
+Rename `com.yourdomain.media_mgmt_helper.plist` LaunchAgent file and add your own details to the file. Make sure that source path and `WatchPaths` path match. Add two target folders, if you want to put photos and videos into separate folders.
 
 - `media_mgmt_helper.py` location
 - Source folder
@@ -120,7 +120,7 @@ Edit `com.yourdomain.media_mgmt_helper.plist` file with your personal details. M
 - StandardOutPath
 - StandardErrorPath
 
-Move custom LaunchAgent plist to user `LaunchAgents` folder:
+Move your custom LaunchAgent plist to user `LaunchAgents` folder:
 
 `$ mv path/to/com.yourdomain.media_mgmt_helper.plist ~/Library/LaunchAgents/`
 
