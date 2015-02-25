@@ -1,7 +1,7 @@
 Media Management Helper
 =======================
 
-Media Management Helper is part of my personal photo and video management solution. Designed mainly to help automating photo and video management with Dropbox Camera Uploads. See my photo management details [here](http://www.trrt.me/#!./md/photo_management.md).
+Media Management Helper is part of my personal photo and video management solution. Designed mainly to help automating photo and video management with Dropbox Camera Uploads. See my photo management solution [here](http://www.trrt.me/#!./md/photo_management.md).
 
 - Uses compiled Swift binary or  [ExifTool](http://www.sno.phy.queensu.ca/~phil/exiftool/) to read file metadata
 - Creates directory tree based on EXIF DateTimeOriginal year and month metadata information
@@ -10,8 +10,7 @@ Media Management Helper is part of my personal photo and video management soluti
 Pre-requisites
 --------------
 
-- OS X 10.10.X
-- Python 2.7.6
+- Swift binary is compiled for OS X 10.10
 - exiftool 9.82+ (optional)
 
 Usage
@@ -19,7 +18,7 @@ Usage
 
 **Git clone repo:**
 
-`$ git clone ...`
+`$ git clone https://github.com/jlehikoinen/media-management-helper.git`
 
 **Edit global variables in `media_mgmt_helper.py` script.**
 
@@ -27,7 +26,7 @@ Usage
 2. Select Swift binary or ExifTool
 3. Media folder descriptions
 4. Dropbox location
-5. Unsorted folder location
+5. 'Unsorted' folder location
 
 **Run script**
 
@@ -39,7 +38,7 @@ If two separate target folders are used, one for photos and one for videos:
 
 `$ ./media_mgmt_helper.py path/to/source_folder path/to/target_photos path/to/target_videos`
 
-Check "Utilizing OS X LaunchAgent" (link) part to automate things..
+Check [Utilizing OS X LaunchAgent](#utilizing-os-x-launchagent) part for automated solution.
 
 Additional information
 ----------------------
@@ -113,7 +112,7 @@ Utilizing OS X LaunchAgent
 
 OS X LaunchD system can be used with the `media_mgmt_helper.py` script to automatically move files from source folder to target folder(s).
 
-Edit `com.yourdomain.media_mgmt_helper.plist` file with your personal details. Make sure that source path and `WatchPaths` path match.
+Edit `com.yourdomain.media_mgmt_helper.plist` file with your personal details. Make sure that source path and `WatchPaths` path match. Add two target folders, if you want to put photos and videos into separate folders.
 
 - `media_mgmt_helper.py` location
 - Source folder
