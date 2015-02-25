@@ -16,8 +16,8 @@
         <string>/path/to/Dropbox/Camera Uploads</string>
     </array>
     <key>StandardOutPath</key>
-	<string>/path/to/media_mgmt_helper.log</string>
-	<key>StandardErrorPath</key>
-	<string>/path/to/media_mgmt_helper.log</string>
+    <string>/path/to/media_mgmt_helper.log</string>
+    <key>StandardErrorPath</key>
+    <string>/path/to/media_mgmt_helper.log</string>
 </dict>
 </plist>
