@@ -1,7 +1,7 @@
 Media Management Helper
 =======================
 
-Media Management Helper is part of my personal photo and video management solution. Mainly designed to help automating photo and video management with Dropbox Camera Uploads. See my photo management solution [here](http://www.trrt.me/#!./md/photo_management.md).
+Media Management Helper is part of my personal photo and video management solution. Mainly designed to help automating photo and video management with Dropbox Camera Uploads. See the complete photo management solution [here](http://www.trrt.me/#!./md/photo_management.md).
 
 - Uses compiled Swift binary `get-metadata` or  [ExifTool](http://www.sno.phy.queensu.ca/~phil/exiftool/) to read file metadata
     - DateTimeOriginal year
@@ -63,7 +63,7 @@ Minor things:
 Testing Swift binary
 --------------------
 
-The Swift binary is far from decent metadata reader, but it should read camera model and creation date metadata correctly. You can try out these commands separately if you need to troubleshoot something.
+The Swift binary is far from proper file metadata reader, but it should read camera model and creation date metadata correctly. You can try out these commands separately if you need to troubleshoot something.
 
 Get camera model information from a photo file:
 
