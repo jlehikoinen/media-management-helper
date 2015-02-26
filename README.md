@@ -63,6 +63,8 @@ Minor things:
 Testing Swift binary
 --------------------
 
+The Swift binary isn't quite finalized yet, but it should read all the necessary metadata correctly. You can try out these commands separately if you need to troubleshoot something.
+
 Get camera model information from a photo file:
 
 `$ ./get-metadata photo Model /path/to/photo.JPG`
