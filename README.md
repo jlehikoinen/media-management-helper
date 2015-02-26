@@ -63,7 +63,7 @@ Minor things:
 Testing Swift binary
 --------------------
 
-The Swift binary isn't quite finalized yet, but it should read all the necessary file metadata correctly. You can try out these commands separately if you need to troubleshoot something.
+The Swift binary is far from decent metadata reader, but it should read camera model and creation date metadata correctly. You can try out these commands separately if you need to troubleshoot something.
 
 Get camera model information from a photo file:
 
