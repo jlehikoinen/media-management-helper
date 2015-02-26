@@ -60,6 +60,24 @@ Minor things:
 - Script can't handle subfolders inside source folder
 - Script doesn't check for empty source folder
 
+Testing Swift binary
+--------------------
+
+Get camera model information from a photo file:
+
+`$ ./get-metadata photo Model /path/to/photo.JPG`
+
+Get file creation date information from a photo file:
+
+`$ ./get-metadata photo DateTimeOriginal /path/to/photo.JPG`
+
+Get camera model information from a video file:
+
+`$ ./get-metadata video common/model /path/to/video.MOV`
+
+Get file creation date information from a video file:
+
+`$ ./get-metadata video common/creationDate /path/to/video.MOV`
 
 Directory tree naming convention
 --------------------------------
