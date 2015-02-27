@@ -16,6 +16,7 @@ Pre-requisites
 Usage
 -----
 
+
 **Git clone repo:**
 
 `$ git clone https://github.com/jlehikoinen/media-management-helper.git`
