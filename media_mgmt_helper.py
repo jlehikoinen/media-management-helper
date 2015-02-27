@@ -39,7 +39,7 @@ VIDS_EXTENSIONS = ['.mov', '.MOV']
 
 # Change to True if ExifTool is used
 # Defaults to Swift binary (False)
-USE_EXIFTOOL=False
+USE_EXIFTOOL = False
 
 # 3 - Photo and video subfolder descriptions
 
@@ -79,6 +79,7 @@ TIME_FORMAT = '%d.%m.%Y %H.%M.%S'
 """
 
 # Helper functions
+
 
 def msg_info(msg):
     """Print date & time stamp and message"""
@@ -212,6 +213,7 @@ def get_model_swift(file_path):
 
     return model
 
+
 def get_year_month_swift(file_path):
 
     """
@@ -248,6 +250,7 @@ def get_year_month_swift(file_path):
         month = ''
 
     return year, month
+
 
 def call_cmd(command):
     """
