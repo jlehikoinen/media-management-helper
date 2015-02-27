@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-media_mgmt_helper.py -- util for moving photo and video files (inside Dropbox)
+media_mgmt_helper.py -- tool for moving photo and video files (inside Dropbox)
 
 Copyright (c) 2015 Janne Lehikoinen
 
@@ -10,7 +10,6 @@ This script copies photos and videos from one source folder
 to one target folder or two separate target folders.
 
 Folder(s) are created based on DateTimeOriginal or CreateDate metadata.
-
 """
 
 """
