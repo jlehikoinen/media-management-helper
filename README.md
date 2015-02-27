@@ -3,14 +3,13 @@ Media Management Helper
 
 Media Management Helper is part of my personal photo and video management solution. Mainly designed to help automating photo and video management with Dropbox Camera Uploads. See the complete photo management solution [here](http://www.trrt.me/#!./md/photo_management.md).
 
-- Uses compiled Swift binary `get-metadata` or  [ExifTool](http://www.sno.phy.queensu.ca/~phil/exiftool/) to read file metadata
+- `media_mgmt_helper.py` uses compiled Swift binary `get-metadata` or  [ExifTool](http://www.sno.phy.queensu.ca/~phil/exiftool/) to read file metadata
 - Creates directory tree based on EXIF DateTimeOriginal year and month metadata information
 - Moves files from source folder to target folder(s)
 
 Pre-requisites
 --------------
 
-- Photos and videos have valid metadata
 - Swift binary is compiled for OS X 10.10
 - exiftool 9.82+ (if used)
 
