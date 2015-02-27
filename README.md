@@ -55,7 +55,7 @@ Additional information
 Minor things:
 
 - Script can't handle subfolders inside source folder
-- Script doesn't check for empty source folder
+- Script doesn't output anything if source folder is empty
 
 Testing Swift binary
 --------------------
