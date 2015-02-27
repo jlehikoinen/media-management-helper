@@ -15,7 +15,6 @@ Folder(s) are created based on DateTimeOriginal or CreateDate metadata.
 
 """
 TODO
-- Validate EXT arrays?
 - 'Mass mover' option?
 """
 
@@ -392,7 +391,7 @@ def main():
                 move_file(full_paths[0], target_path, file, model)
 
             else:
-                msg_info(file + ' is missing Create Date tag')
+                msg_info(file + ' is missing date metadata')
                 # Move files to UNSORTED_FOLDER
                 move_file(full_paths[0], UNSORTED_FOLDER, file, model)
     # main loop ends
