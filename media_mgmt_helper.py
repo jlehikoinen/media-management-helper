@@ -21,7 +21,6 @@ import os
 import sys
 import datetime
 import subprocess
-import logging
 import re
 
 """
