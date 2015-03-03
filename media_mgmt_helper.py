@@ -14,7 +14,7 @@ Folder(s) are created based on DateTimeOriginal or CreateDate metadata.
 
 """
 TODO
-- 'Mass mover' option?
+- 'Mass mover' option for manual operations?
 """
 
 import os
@@ -28,38 +28,58 @@ import re
 EDIT THESE GLOBAL VARIABLES >>>>>
 """
 
-# 1 - File types
+"""
+1. File types
 
-# File types that will be moved to target folder(s)
+File types that will be moved to target folder(s)
+Defaults to
+PICS_EXTENSIONS = ['.jpg', '.JPG']
+VIDS_EXTENSIONS = ['.mov', '.MOV']
+"""
+
 PICS_EXTENSIONS = ['.jpg', '.JPG']
 VIDS_EXTENSIONS = ['.mov', '.MOV']
 
-# 2 - Use ExifTool
+"""
+2. Use ExifTool
 
-# Change to True if ExifTool is used
-# Defaults to Swift binary (False)
+Change to True if ExifTool is used
+Defaults to Swift binary, USE_EXIFTOOL = False
+"""
+
 USE_EXIFTOOL = False
 
-# 3 - Photo and video subfolder descriptions
+"""
+3. Photo and video subfolder descriptions
 
-# These descriptions are added to subfolder names
-# if photos and videos go to separate folders.
-# Defaults to Finnish
-# English example: PICS_DESC = '-photos' & VIDS_DESC = '-videos'
+These descriptions are added to subfolder names
+if photos and videos go to separate folders.
+Defaults to Finnish, PICS_DESC = '-kuvat' & VIDS_DESC = '-videot'
+English example: PICS_DESC = '-photos' & VIDS_DESC = '-videos'
+"""
+
 PICS_DESC = '-kuvat'
 VIDS_DESC = '-videot'
 
-# 4 - Dropbox folder location
+"""
+4. Dropbox folder location
 
-# Defaults to '~/Dropbox'
+Defaults to '~/Dropbox'
+"""
+
 DROPBOX_ROOT = os.path.expanduser("~") + '/Dropbox'
 
-# 5 - Unsorted files location
+"""
+5. Unsorted files location
 
-# Defaults to '~/Dropbox/Unsorted Media Files'
+Defaults to '~/Dropbox/Unsorted Media Files'
+"""
+
 UNSORTED_FOLDER = DROPBOX_ROOT + '/Unsorted Media Files'
 
-# Optional customization >>>>>
+"""
+Optional customization >>>>>
+"""
 
 # Binary paths
 EXIFTOOL = '/usr/bin/exiftool'
@@ -74,27 +94,35 @@ REGEX_MONTH = r'^(0?[1-9]|1[012])$'
 TIME_FORMAT = '%d.%m.%Y %H.%M.%S'
 
 """
->>>>> END GLOBAL VARIABLE EDITING
+END GLOBAL VARIABLE EDITING
 """
 
 # Helper functions
 
 
 def msg_info(msg):
-    """Print date & time stamp and message"""
+    """Print date & time stamp and message.
+
+    Parameters
+        msg: message string
+    """
 
     date_pattern = datetime.datetime.now().strftime(TIME_FORMAT)
     print '%s: %s' % (date_pattern, msg)
 
 
 def msg_error(msg):
-    """Print error message"""
+    """Print error message.
+
+    Parameters
+        msg: message string
+    """
 
     print 'ERROR: %s' % msg
 
 
 def msg_usage():
-    """Print usage message"""
+    """Print usage message."""
 
     print """Usage:
 
@@ -107,7 +135,10 @@ def msg_usage():
 
 
 def preflight_checks():
-    """Run few preflight checks"""
+    """Run few preflight checks.
+    Check if binaries are installed
+    and create UNSORTED_FOLDER folder if it doesn't exist.
+    """
 
     if USE_EXIFTOOL:
         # Check that ExifTool is installed
@@ -127,9 +158,14 @@ def preflight_checks():
 
 
 def folder_validator(folder):
-    """
-    Validate folders and add trailing slash if needed
-    Return: full path
+    """Validate folders and add trailing slash if needed.
+    Script exits if folder is not found or not a folder
+
+    Parameters
+        folder: complete folder path string
+
+    Returns
+        folder: Complete folder path string with trailing slash
     """
 
     if not os.path.exists(folder):
@@ -148,9 +184,13 @@ def folder_validator(folder):
 
 
 def get_model_exiftool(file_path):
-    """
-    Get camera model using ExifTool
-    Return: model (e.g. iPhone):
+    """Get camera model using ExifTool
+
+    Parameters
+        file_path: complete file path string
+
+    Returns
+        model: Camera model string, e.g. iPhone
     """
 
     command = [EXIFTOOL,
@@ -162,11 +202,15 @@ def get_model_exiftool(file_path):
 
 
 def get_year_month_exiftool(file_path):
-    """
-    Get year and month from CreateDate tag using ExifTool
-    If no CreateDate tag, parse year and month from file name
+    """Get year and month from CreateDate tag using ExifTool.
+    If no CreateDate tag, parse year and month from file name.
     Carousel naming convention: 2015-02-12 00.05.58.jpg
-    Return: year, month (e.g. 2015 and 02)
+
+    Parameters
+        file_path: complete file path string
+
+    Returns
+        A tuple of (year, month), e.g. 2015 and 02
     """
 
     file_name = os.path.basename(file_path)
@@ -196,10 +240,15 @@ def get_year_month_exiftool(file_path):
 
 
 def get_model_swift(file_path):
+    """Get camera model using Swift.
+
+    Parameters
+        file_path: complete file path string
+
+    Returns
+        model: Camera model string, e.g. iPhone
     """
-    Get camera model using Swift
-    Return: model (e.g. iPhone):
-    """
+
     file_name_dummy, extension = os.path.splitext(file_path)
     model = ""
 
@@ -215,12 +264,17 @@ def get_model_swift(file_path):
 
 def get_year_month_swift(file_path):
 
-    """
-    Get year and month from DateTimeOriginal metadata using Swift
-    If no Create Date tag, parse year name from file name
+    """Get year and month from DateTimeOriginal metadata using Swift.
+    If no date metadata, parse year name from file name.
     Carousel naming convention: 2015-02-12 00.05.58.jpg
-    Return: year and month (e.g. 2015 and 02)
+
+    Parameters
+        file_path: complete file path string
+
+    Returns
+        A tuple of (year, month), e.g. 2015 and 02
     """
+
     file_name_dummy, extension = os.path.splitext(file_path)
     file_name = os.path.basename(file_path)
 
@@ -252,9 +306,13 @@ def get_year_month_swift(file_path):
 
 
 def call_cmd(command):
-    """
-    Subprocess function that runs cli commands
-    Return: stdout (white space removed)
+    """Subprocess function that runs cli commands.
+
+    Parameters
+        command: command and argument(s) array
+
+    Returns
+        out: stdout string (white space removed)
     """
 
     task = subprocess.Popen(command,
@@ -271,9 +329,16 @@ def call_cmd(command):
 
 
 def create_dir_tree(target_path, year, month, media_type):
-    """
-    Create directory tree if it doesn't exist
-    Return: full target path (e.g. path/to/target/2015/2015-02)
+    """Create directory tree if it doesn't exist.
+
+    Parameters
+        target_path: user defined argument (target path)
+        year: year from metadata or from file name
+        month: month from metadata or from file name
+        media_type: empty or photo/video description
+
+    Returns
+        month_path: full target path string (e.g. path/to/target/2015/2015-02)
     """
 
     year_path = target_path + year
@@ -291,9 +356,14 @@ def create_dir_tree(target_path, year, month, media_type):
 
 
 def move_file(source_path, target_path, file_name, model):
-    """
-    Move file to target location
-    Don't move file if found in target folder
+    """Move file to target location.
+    Don't move file if already found in target folder.
+
+    Parameters
+        source_path: user defined argument (source path)
+        target_path: user defined argument (target path)
+        file_name: file name with extension
+        model: camera model (used for logging)
     """
 
     last_path = os.path.basename(os.path.normpath(target_path))
