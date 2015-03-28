@@ -1,7 +1,9 @@
 Media Management Helper
 =======================
 
-Media Management Helper is part of my personal photo and video management solution. Mainly designed to help automating photo and video management with Dropbox Camera Uploads. See the complete photo management solution [here](http://www.trrt.me/#!./md/photo_management.md).
+_Update: See Dropbox Core API and Heroku based solution [here](https://github.com/jlehikoinen/db-mover)_
+
+Media Management Helper is part of my personal photo and video management solution. Mainly designed to help automating photo and video management with Dropbox Camera Uploads. See the complete photo management solution [here](http://www.trrt.me/#!./md/photo_management_v1.md).
 
 - `media_mgmt_helper.py` uses compiled Swift binary `get-metadata` or  [ExifTool](http://www.sno.phy.queensu.ca/~phil/exiftool/) to read file metadata
 - Creates directory tree based on EXIF DateTimeOriginal year and month metadata information
