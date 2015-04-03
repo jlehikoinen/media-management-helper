@@ -19,6 +19,7 @@ TODO
 
 import os
 import sys
+import shutil
 import datetime
 import subprocess
 import re
@@ -46,7 +47,7 @@ Change to True if ExifTool is used
 Defaults to Swift binary, USE_EXIFTOOL = False
 """
 
-USE_EXIFTOOL = False
+USE_EXIFTOOL = True
 
 """
 3. Photo and video subfolder descriptions
@@ -66,7 +67,8 @@ VIDS_DESC = '-videot'
 Defaults to '~/Dropbox'
 """
 
-DROPBOX_ROOT = os.path.expanduser("~") + '/Dropbox'
+# DROPBOX_ROOT = os.path.expanduser("~") + '/Dropbox'
+DROPBOX_ROOT = '/Volumes/Storage'
 
 """
 5. Unsorted files location
@@ -380,7 +382,7 @@ def move_file(source_path, target_path, file_name, model):
             # Actual move operation
             msg_info(model + 'Moving ' +
                      file_name + ' to ' + last_path)
-            os.rename(os.path.join(source_path, file_name),
+            shutil.move(os.path.join(source_path, file_name),
                       os.path.join(target_path, file_name))
         except OSError as e:
             msg_error(e)
